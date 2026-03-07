@@ -1,6 +1,6 @@
 # DSA Journey 🚀
 
-This repository contains my **Data Structures and Algorithms (DSA)** practice, including solved coding problems, notes, and concepts that I am learning during my preparation for **DSA*.
+This repository contains my **Data Structures and Algorithms (DSA)** practice, including solved coding problems, notes, and concepts that I am learning during my preparation for *DSA*.
 
 The goal of this repository is to maintain a structured record of my problem-solving journey and continuously improve my algorithmic thinking.
 
@@ -32,3 +32,4 @@ The goal of this repository is to maintain a structured record of my problem-sol
 - Dynamic Programming
 - Greedy Algorithms
 - Backtracking
+
