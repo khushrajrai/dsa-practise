@@ -1,5 +1,15 @@
-# git init
-# git add .
-# git status
-# git commit -m "Added Questions"
-# git push origin main
+# Compiled class files
+*.class
+*.exe
+
+# Logs
+*.log
+
+# IDE files
+.vscode/
+.idea/
+*.iml
+
+# Environment files
+.env
+
