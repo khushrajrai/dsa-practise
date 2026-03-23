@@ -14,7 +14,6 @@ public class Ten {
     public static void main(String[] args) {
 
         int n = 5;
-        // cin >> n;
         int row = 1;
 
         // Upper Part
