@@ -22,3 +22,20 @@
 // -10 <= nums[i] <= 10
 // All the numbers of nums are unique.
 
+class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        int len = nums.length;
+        int subsets = 1<<len;
+        for(int i=0;i<subsets;i++){
+            List<Integer> list = new ArrayList<>();
+            for(int j=0;j<len;j++){
+                if((i&(1<<j))!=0){
+                    list.add(nums[j]);
+                }
+            }
+            res.add(list);
+        }
+        return res;
+    }
+}
