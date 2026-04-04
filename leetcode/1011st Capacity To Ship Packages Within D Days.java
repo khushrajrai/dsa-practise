@@ -44,3 +44,42 @@
 // 1 <= days <= weights.length <= 5 * 104
 // 1 <= weights[i] <= 500
 
+class Solution {
+    public int shipWithinDays(int[] weights, int days) {
+        int n = weights.length;
+        int start = 0;
+        int end = 0;
+        for (int w : weights){
+            start = Math.max(start,w);
+            end += w;
+        }
+        int ans = -1;
+        while(start<=end){
+            int mid = start + (end-start)/2;
+            if(isShipmentAllowed(weights,mid,days)){
+                ans = mid;
+                end=mid-1;
+            }
+            else{
+                start=mid+1;
+            }
+        }
+        return ans;
+    }
+
+    private boolean isShipmentAllowed(int weights[], int capacity, int days){
+        int d=1;
+        int count = 0;
+        for (int w : weights){
+            count += w;
+            if(count>capacity){
+                d++;
+                count=w;
+            }
+            if(d>days){
+                return false;
+            }
+        }
+        return true;
+    }
+}
