@@ -21,6 +21,7 @@
 // 1 <= n <= 104
 // 0 <= nums[i] <= n
 // All the numbers of nums are unique.
+// Using XOR & Bit Manipulation
 class Solution {
 
     public int missingNumber(int[] nums) {
@@ -35,3 +36,31 @@ class Solution {
         return xorNum ^ xorEle;
     }
 }
+
+// Using Cyclic Sort (Fixed Range)
+// class Solution {
+//     public int missingNumber(int[] nums) {
+//         int i=0;
+//         int n = nums.length;
+//         while(i<n){
+//             int expectedIndex = nums[i];
+//             if(expectedIndex>=n || nums[expectedIndex] == nums[i]){
+//                 i++;
+//             }
+//             else{
+//                 swap(nums,expectedIndex,i);
+//             }
+//         }
+//         for(int j=0;j<n;j++){
+//             if(nums[j]!=j){
+//                 return j;
+//             }
+//         }
+//         return n;
+//     }
+//     public void swap(int[] nums, int i, int j){
+//         int temp = nums[i];
+//         nums[i] = nums[j];
+//         nums[j] = temp;
+//     }
+// }
