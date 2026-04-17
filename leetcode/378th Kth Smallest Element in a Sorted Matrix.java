@@ -26,20 +26,20 @@ class Solution {
         int start = matrix[0][0];
         int end = matrix[R - 1][C - 1];
         while (start <= end) {
-            int assumedMedian = start + (end - start) / 2;
+            int assumedKthElement = start + (end - start) / 2;
             //No of Elements lesser that assumedMedian
             // k - No of lesser elements
-            int lesserElements = findSmallerElements(matrix, assumedMedian);
-            if (lesserElements <= requiredSmallerElements) {
-                start = assumedMedian + 1;
+            int smallerElements = findSmallerElements(matrix, assumedKthElement);
+            if (smallerElements <= requiredSmallerElements) {
+                start = assumedKthElement + 1;
             } else {
-                end = assumedMedian - 1;
+                end = assumedKthElement - 1;
             }
         }
         return start;
     }
 
-    public int findSmallerElements(int[][] matrix, int assumedMedian) {
+    public int findSmallerElements(int[][] matrix, int assumedKthElement) {
         int noOfSmallerElements = 0;
         //Traverse row by row
         for (int i = 0; i < matrix.length; i++) {
@@ -50,7 +50,7 @@ class Solution {
             int end = matrix[i].length - 1;
             while (start <= end) {
                 int mid = start + (end - start) / 2;
-                if (matrix[i][mid] <= assumedMedian) {
+                if (matrix[i][mid] <= assumedKthElement) {
                     start = mid + 1;
                 } else {
                     end = mid - 1;
