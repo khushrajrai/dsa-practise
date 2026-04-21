@@ -47,3 +47,7 @@
 -- Explanation: 
 -- (1, A) and (3, C) were changed from 'm' to 'f'.
 -- (2, B) and (4, D) were changed from 'f' to 'm'.
+
+# Write your MySQL query statement below
+
+Update Salary SET sex=CASE WHEN sex='f' THEN 'm' WHEN sex='m' THEN 'f' END;
