@@ -24,3 +24,16 @@
 // 0 <= s.length <= 1000
 // t.length == s.length + 1
 // s and t consist of lowercase English letters.
+
+class Solution {
+    public char findTheDifference(String s, String t) {
+        char result = 0;
+        for(char c : s.toCharArray()){
+            result = (char)(result^c);
+        }
+        for(char c : t.toCharArray()){
+            result = (char)(result^c);
+        }
+        return result;
+    }
+}
