@@ -1,9 +1,7 @@
 // Array Subset
 
 // Given two arrays a[] and b[], your task is to determine whether b[] is a subset of a[].
-
 // Examples:
-
 // Input: a[] = [11, 7, 1, 13, 21, 3, 7, 3], b[] = [11, 3, 7, 1, 7]
 // Output: true
 // Explanation: b[] is a subset of a[]
@@ -16,3 +14,21 @@
 // Constraints:
 // 1 <= a.size(), b.size() <= 105
 // 1 <= a[i], b[j] <= 106
+class Solution {
+
+    public boolean isSubset(int a[], int b[]) {
+        // Your code here
+        HashMap<Integer, Integer> freqMap = new HashMap<>();
+        for (int element : a) {
+            freqMap.put(element, freqMap.getOrDefault(element, 0) + 1);
+        }
+        for (int element : b) {
+            if (freqMap.getOrDefault(element, 0) > 0) {
+                freqMap.put(element, freqMap.getOrDefault(element, 0) - 1);
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+}
