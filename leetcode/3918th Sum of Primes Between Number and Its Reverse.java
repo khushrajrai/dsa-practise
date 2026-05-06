@@ -46,3 +46,30 @@
 
 // 1 <= n <= 1000
 
+class Solution {
+    private boolean isPrime(int x){
+        if(x<2) return false;
+        for(int i=2;i*i<=x;i++){
+            if(x%i==0) return false;
+        }
+        return true;
+    }
+    public int sumOfPrimesInRange(int n) {
+        int r = 0;
+        int temp=n;
+        while(temp>0){
+            int digit = temp%10;
+            r=r*10+digit;
+            temp/=10;
+        }
+        int a = Math.min(n,r);
+        int b = Math.max(n,r);
+        int sum=0;
+        for(int i=a;i<=b;i++){
+            if(isPrime(i)){
+                sum = sum+=i;
+            }
+        }
+        return sum;
+    }
+}
