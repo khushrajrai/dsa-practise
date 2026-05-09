@@ -31,3 +31,17 @@
 // 2 <= nums.length <= 1000
 // -109 <= nums[i] <= 109
 
+class Solution {
+    public boolean findSubarrays(int[] nums) {
+        int n = nums.length;
+        HashSet<Integer> seen = new HashSet<>();
+        for(int i=1;i<n;i++){
+            int sum = nums[i]+nums[i-1];
+            if(seen.contains(sum)){
+                return true;
+            }
+            seen.add(sum);
+        }
+        return false;
+    }
+}
