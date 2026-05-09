@@ -39,7 +39,8 @@ class Solution {
             if(seen.contains(sum)){
                 return true;
             }
-            seen.add(sum);
+            seen.add(sum); //add if now exists2444. Count Subarrays With Fixed Bounds
+S
         }
         return false;
     }
