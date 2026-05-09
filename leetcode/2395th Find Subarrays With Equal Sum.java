@@ -8,7 +8,7 @@
 
  
 
-// Example 1:
+// Example 1::
 
 // Input: nums = [4,2,4]
 // Output: true
@@ -33,9 +33,8 @@
 
 class Solution {
     public boolean findSubarrays(int[] nums) {
-        int n = nums.length;
         HashSet<Integer> seen = new HashSet<>();
-        for(int i=1;i<n;i++){
+        for(int i=1;i<nums.length;i++){
             int sum = nums[i]+nums[i-1];
             if(seen.contains(sum)){
                 return true;
