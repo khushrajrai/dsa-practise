@@ -29,3 +29,19 @@
 // 2 <= nums.length <= 105
 // 1 <= nums[i], minK, maxK <= 106
 
+class Solution {
+    public long countSubarrays(int[] nums, int minK, int maxK) {
+        long count = 0;
+        int boundaryIndex = -1;
+        int minIndex = -1;
+        int maxIndex = -1;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]<minK || nums[i]>maxK) boundaryIndex = i;
+            if(nums[i]==minK) minIndex = i;
+            if(nums[i]==maxK) maxIndex = i;
+            int startIndex = Math.min(minIndex,maxIndex);
+            count += Math.max(0,startIndex-boundaryIndex);
+        }
+        return count;
+    }
+}
