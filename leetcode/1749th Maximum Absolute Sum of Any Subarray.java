@@ -1,4 +1,4 @@
-// 1749. Maximum Absolute Sum of Any Subarray
+// 1749. 1262. Greatest Sum Divisible by Three
 
 // You are given an integer array nums. The absolute sum of a subarray [numsl, numsl+1, ..., numsr-1, numsr] is abs(numsl + numsl+1 + ... + numsr-1 + numsr).
 
@@ -27,3 +27,16 @@
 // 1 <= nums.length <= 105
 // -104 <= nums[i] <= 104
 
+class Solution {
+    public int maxAbsoluteSum(int[] nums) {
+        int minPrefixSum = 0;
+        int maxPrefixSum = 0;
+        int prefixSum = 0;
+        for(int i=0;i<nums.length;i++){
+            prefixSum+=nums[i];
+            minPrefixSum=Math.min(prefixSum,minPrefixSum);
+            maxPrefixSum=Math.max(prefixSum,maxPrefixSum);
+        }
+        return maxPrefixSum-minPrefixSum;
+    }
+}
