@@ -2,9 +2,7 @@
 
 // Given an array arr[] and a positive integer k, find the length of the longest subarray with the sum of the elements divisible by k.
 // Note: If there is no subarray with sum divisible by k, then return 0.
-
 // Examples :
-
 // Input: arr[] = [2, 7, 6, 1, 4, 5], k = 3
 // Output: 4
 // Explanation: The subarray [7, 6, 1, 4] has sum = 18, which is divisible by 3.
@@ -18,4 +16,27 @@
 // 1 <= arr.size() <= 106
 // 1 <= k <= 106
 // -106 <= arr[i] <= 106 
+// User function Template for Java
+class Solution {
 
+    int longestSubarrayDivK(int[] arr, int k) {
+        HashMap<Integer, Integer> remMap = new HashMap<>();
+        remMap.put(0, -1);
+        int maxlen = 0;
+        long sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
+            int rem = (int) (sum % k);
+            if (rem < 0) {
+                rem += k;
+            }
+            if (remMap.containsKey(rem)) {
+                int len = i - remMap.get(rem);
+                maxlen = Math.max(maxlen, len);
+            } else {
+                remMap.put(rem, i);
+            }
+        }
+        return maxlen;
+    }
+}
