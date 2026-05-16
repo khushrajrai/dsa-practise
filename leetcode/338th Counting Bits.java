@@ -23,22 +23,34 @@
 // Follow up:
 // It is very easy to come up with a solution with a runtime of O(n log n). Can you do it in linear time O(n) and possibly in a single pass?
 // Can you do it without using any built-in function (i.e., like __builtin_popcount in C++)?
+// TC - ON
 class Solution {
 
     public int[] countBits(int n) {
         int res[] = new int[n + 1];
-        for (int i = 0; i <= n; i++) {
-            int count = 0;
-            int temp = i;
-            if (temp == 0) {
-                continue;
-            }
-            while (temp > 0) {
-                temp = temp & (temp - 1);
-                count++;
-            }
-            res[i] = count;
+        for (int i = 1; i <= n; i++) {
+            res[i] = res[i >> 1] + (i & 1);
         }
         return res;
     }
 }
+
+// // TC - ONlogn
+// class Solution {
+//     public int[] countBits(int n) {
+//         int res[] = new int[n+1];
+//         for(int i=0;i<=n;i++){
+//             int count = 0;
+//             int temp = i;
+//             if(temp == 0){
+//                 continue;
+//             }
+//             while(temp>0){
+//                 temp = temp&(temp-1);
+//                 count++;
+//             }
+//             res[i] = count;
+//         }
+//         return res;
+//     }
+// }
