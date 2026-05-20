@@ -53,3 +53,6 @@
 -- | 2019-07-21 | 2            |
 -- +------------+--------------+ 
 -- Explanation: Note that we do not care about days with zero active users.
+
+# Write your MySQL query statement below
+Select activity_date as day, count(Distinct user_id) as active_users from Activity where activity_date Between '2019-06-28' and '2019-07-27' group by activity_date;
