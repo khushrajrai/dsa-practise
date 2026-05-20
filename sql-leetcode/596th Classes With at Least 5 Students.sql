@@ -51,3 +51,5 @@
 -- - Biology has 1 student, so we do not include it.
 -- - Computer has 1 student, so we do not include it.
 
+# Write your MySQL query statement below
+Select class from Courses group by class having count(class)>=5 ;
