@@ -49,3 +49,5 @@
 -- | 3.50  | 4    |
 -- +-------+------+
 
+# Write your MySQL query statement below
+Select s1.score, count(s2.score) as `rank` from Scores s1, (Select Distinct score from Scores) s2 where s1.score<=s2.score group by s1.id Order by s1.score desc;
