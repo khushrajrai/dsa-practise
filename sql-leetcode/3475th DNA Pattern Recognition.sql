@@ -92,3 +92,16 @@
 -- The result is ordered by sample_id in ascending order
 -- For each pattern, 1 indicates the pattern is present and 0 indicates it is not present
 
+# Write your MySQL query statement below
+SELECT 
+sample_id
+,dna_sequence
+,species
+,CASE WHEN dna_sequence LIKE 'ATG%' THEN 1 ELSE 0 END AS has_start
+,CASE WHEN dna_sequence LIKE '%TAA' 
+OR dna_sequence LIKE '%TAG'
+OR dna_sequence LIKE '%TGA' THEN 1 ELSE 0 END AS has_stop        
+,CASE WHEN dna_sequence LIKE '%ATAT%' THEN 1 ELSE 0 END AS has_atat
+,CASE WHEN dna_sequence LIKE '%GGG%' THEN 1 ELSE 0 END AS has_ggg
+FROM samples
+ORDER BY sample_id ASC;
