@@ -33,3 +33,42 @@
 // 1 <= num <= 104
 // num consists of only 6 and 9 digits.
 
+class Solution {
+    public void reverse(int arr[]){
+        int left = 0;
+        int right = arr.length-1;
+        while(left<right){
+            int tempVar = arr[left];
+            arr[left] = arr[right];
+            arr[right] = tempVar;
+            left++;
+            right--;
+        }
+    }
+    public int maximum69Number (int num) {
+        // intuition - change very first occurene of 6 to 9 and return new number
+        int temp=num;
+        int size = String.valueOf(num).length();
+        int[] arr = new int[size];
+        int index = 0;
+        while(temp>0){
+            int digit = temp%10;
+            arr[index] = digit;
+            index++;
+            temp/=10;
+        }
+        reverse(arr);
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]==6){
+                arr[i]=9;
+                break;
+            }
+        }
+        StringBuilder ans = new StringBuilder();
+        for(int val : arr){
+            ans.append(val);
+        }
+
+        return Integer.parseInt(new String(ans));
+    }
+}
