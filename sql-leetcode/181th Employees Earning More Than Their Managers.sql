@@ -42,3 +42,5 @@
 -- +----------+
 -- Explanation: Joe is the only employee who earns more than his manager.
 
+# Write your MySQL query statement below
+Select e1.name as Employee from Employee e1 Inner Join Employee e2 on e1.managerId=e2.id and  e1.Salary>e2.salary;
