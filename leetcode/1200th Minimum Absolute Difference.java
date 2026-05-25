@@ -18,9 +18,29 @@
 // Constraints:
 // 2 <= arr.length <= 105
 // -106 <= arr[i] <= 106
-class Solution {
 
+class Solution {
     public List<List<Integer>> minimumAbsDifference(int[] arr) {
+        Arrays.sort(arr);
+        int minDiff = Math.abs(arr[0] - arr[1]);
+        List<List<Integer>> result = new ArrayList<>();
+        for (int i = 0; i < arr.length - 1; i++) {
+            int currentDiff = Math.abs(arr[i] - arr[i+1]) ;
+            if (currentDiff < minDiff) {
+                result.clear();
+                minDiff = currentDiff;
+                List<Integer> res = new ArrayList<>();
+                res.add(arr[i]);
+                res.add(arr[i+1]);
+                result.add(res);
+            } else if (currentDiff == minDiff) {
+                List<Integer> res = new ArrayList<>();
+                res.add(arr[i]);
+                res.add(arr[i+1]);
+                result.add(res);
+            }
+        }
+        return result;
 
     }
 }
