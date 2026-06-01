@@ -26,9 +26,7 @@ class Solution {
     public int[] maxSlidingWindow(int[] nums, int k) {
         int n = nums.length;
         int res[] = new int[n - k + 1];
-        if (n == 0) {
-            return res;
-        }
+        if (n == 0) return res;
         Deque<Integer> deque = new ArrayDeque<Integer>();
         int index = 0;
         while (index < k) {
