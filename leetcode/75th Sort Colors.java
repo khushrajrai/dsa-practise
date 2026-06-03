@@ -16,19 +16,19 @@
 class Solution {
 
     public void sortColors(int[] nums) {
-        int low = 0;
-        int mid = 0;
-        int high = nums.length - 1;
-        while (mid <= high) {
-            if (nums[mid] == 0) {
-                swap(nums, low, mid);
-                low++;
-                mid++;
-            } else if (nums[mid] == 1) {
-                mid++;
+        int start = 0;
+        int end = nums.length - 1;
+        int index = 0;
+        while (index <= end) {
+            if (nums[index] == 0) {
+                swap(nums, index, start);
+                index++;
+                start++;
+            } else if (nums[index] == 2) {
+                swap(nums, index, end);
+                end--;
             } else {
-                swap(nums, high, mid);
-                high--;
+                index++;
             }
         }
 
