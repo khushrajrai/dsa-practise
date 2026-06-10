@@ -29,3 +29,19 @@
 // names[i] consists of lower and upper case English letters.
 // All the values of heights are distinct.
 
+class Solution {
+    public String[] sortPeople(String[] names, int[] heights) {
+        HashMap<Integer,String> hm = new HashMap<>();
+        for(int i=0;i<names.length;i++){
+            hm.put(heights[i],names[i]);
+        }
+        Arrays.sort(heights);
+        String result[] = new String[names.length];
+        int index=0;
+        for(int i=heights.length-1;i>=0;i--){
+            result[index]=hm.get(heights[i]);
+            index++;
+        }
+        return result;
+    }
+}
