@@ -24,3 +24,17 @@
 // 1 <= n <= 100
 // -100 <= gain[i] <= 100
  
+class Solution {
+    public int largestAltitude(int[] gain) {
+        int newArr[] = new int[gain.length+1];
+        newArr[0]=0;
+        for(int i=1;i<newArr.length;i++){
+            newArr[i]=gain[i-1]+newArr[i-1];
+        }
+        int max=0;
+        for(int num:newArr){
+            max=Math.max(max,num);
+        }
+        return max;
+    }
+}
