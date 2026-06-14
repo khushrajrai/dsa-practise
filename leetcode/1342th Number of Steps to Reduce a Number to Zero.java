@@ -36,3 +36,19 @@
 
 // 0 <= num <= 106
 
+class Solution {
+    public int numberOfSteps(int num) {
+        int stepCount = 0;
+        while(num>0){
+            if(num%2==0){
+                stepCount++;
+                num = num/2;
+            }
+            else{
+                stepCount++;
+                num=num-1;
+            }
+        }
+        return stepCount;
+    }
+}
