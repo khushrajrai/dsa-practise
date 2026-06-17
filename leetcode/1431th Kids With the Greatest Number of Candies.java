@@ -36,3 +36,23 @@
 // 2 <= n <= 100
 // 1 <= candies[i] <= 100
 // 1 <= extraCandies <= 50
+
+class Solution {
+    public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
+        int max=candies[0];
+        for(int nums : candies){
+            max = Math.max(max,nums);
+        }
+        List<Boolean> result = new ArrayList<>();
+        for(int i=0;i<candies.length;i++){
+            int checkVal = candies[i]+extraCandies;
+            if(checkVal>=max){
+                result.add(true);
+            }
+            else{
+                result.add(false);
+            }
+        }
+        return result;
+    }
+}
