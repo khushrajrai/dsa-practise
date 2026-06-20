@@ -38,3 +38,27 @@
 
 // 1 <= k <= 500
 
+class Solution {
+    public char kthCharacter(int k) {
+        int count = solve(k);
+        return (char)('a'+count);
+    }
+    public int solve(int k){
+        //base case - position 1 always has 'a'
+        if(k==1){
+            return 0;
+        }
+        //find the smallest power of 2>=k
+        int len = 1;
+        while(len<k){
+            len*=2;
+        }
+        int half = len/2;
+        //left half 
+        if(k<=half){
+            return solve(k);
+        }
+        //right half
+        return 1+solve(k-half);
+    }
+}
