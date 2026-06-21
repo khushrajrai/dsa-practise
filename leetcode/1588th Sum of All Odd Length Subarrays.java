@@ -42,3 +42,43 @@
 
 // Could you solve this problem in O(n) time complexity?
 
+class Solution {
+    public int sumOddLengthSubarrays(int[] arr) {
+        int result = 0;
+        int n = arr.length;
+        
+        for (int i = 0; i < n; i++) {
+            int endingHere = i + 1;
+            int startingHere = n - i;
+            int totalSubarrays = endingHere * startingHere;
+            int oddSubarrays = totalSubarrays / 2;
+            if (totalSubarrays % 2 == 1) {
+                oddSubarrays++;
+            }
+            result += oddSubarrays * arr[i];
+        }
+        
+        return result;
+    }
+}
+
+//Brute Force
+
+// class Solution {
+//     public int sumOddLengthSubarrays(int[] arr) {
+//         int totalSum=0;
+//         for(int i=0;i<arr.length;i++){
+//             for(int j=i;j<arr.length;j++){
+//                 int len = j-i+1;
+//                 if(len%2==1){
+//                     int currSum=0;
+//                     for (int k = i; k <= j; k++){
+//                         currSum+=arr[k];
+//                     }
+//                     totalSum+=currSum;
+//                 }
+//             }
+//         }
+//         return totalSum;
+//     }
+// }
