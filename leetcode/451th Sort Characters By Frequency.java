@@ -31,3 +31,22 @@
 // 1 <= s.length <= 5 * 105
 // s consists of uppercase and lowercase English letters and digits.
 
+class Solution {
+    public String frequencySort(String s) {
+        HashMap<Character,Integer> map = new HashMap<>();
+        for(char c:s.toCharArray()){
+            map.put(c,map.getOrDefault(c,0)+1);
+        }
+        List<Character> list = new ArrayList<>(map.keySet());
+        list.sort((a,b) -> map.get(b)-map.get(a));
+        StringBuilder ans = new StringBuilder();
+        for(char c : list){
+            int freq = map.get(c);
+            while(freq!=0){
+                ans.append(c);
+                freq--;
+            }
+        }
+        return ans.toString();
+    }
+}
