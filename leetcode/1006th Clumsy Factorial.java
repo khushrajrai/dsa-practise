@@ -30,3 +30,96 @@
 
 // 1 <= n <= 104
 
+//O(1) Solution
+class Solution {
+    public int clumsy(int n) {
+        if(n==1) return 1;
+        if(n==2) return 2;
+        if(n==3) return 6;
+        int ans=n*(n-1)/(n-2)+(n-3);
+        n-=4;
+        while(n>=4){
+            ans-=n*(n-1)/(n-2);
+            ans+=(n-3);
+            n-=4;
+        }
+        if(n==3) ans-=6;
+        else if(n==2) ans-=2;
+        else if(n==1) ans-=1;
+        return ans;
+    }
+}
+
+//Using Stack Solution 
+// class Solution{
+//     public int clumsy(int n){
+//         Stack<Integer> st = new Stack<>();
+//         st.push(n);
+//         int op=0;
+//         for(int i=n-1;i>=1;i--){
+//             if(op==0){
+//                 st.push(st.pop()*i);
+//             }
+//             else if(op==1){
+//                 st.push(st.pop()/i);
+//             }
+//             else if(op==2){
+//                 st.push(i);
+//             }
+//             else{
+//                 st.push(-i);
+//             }
+//             op=(op+1)%4;
+//         }
+//         int ans=0;
+//         while(!st.isEmpty()){
+//             ans+=st.pop();
+//         }
+//         return ans;
+//     }
+// }
+
+//Pattern Based Soution
+// class Solution {
+//     public int clumsy(int n) {
+//         if (n == 1) return 1;
+//         if (n == 2) return 2;
+//         if (n == 3) return 6;
+//         if (n == 4) return 7;
+
+//         switch (n % 4) {
+//             case 0: return n + 1;
+//             case 1: return n + 2;
+//             case 2: return n + 2;
+//             default: return n - 1;
+//         }
+//     }
+// }
+
+
+// Here Bodmass Needed so for that here more preferred Stack Using
+
+// class Solution {
+//     public int clumsy(int n) {
+//         int ans=n;
+//         int index=1;
+//         int i=n-1;
+//         while(i>=1){
+//             if(index%4==1){
+//                 ans*=i;
+//             }
+//             if(index%4==2){
+//                 ans/=i;
+//             }
+//             if(index%4==3){
+//                 ans+=i;
+//             }
+//             if(index%4==0){
+//                 ans-=i;
+//             }
+//             index++;
+//             i--;
+//         }
+//         return ans;
+//     }
+// }
