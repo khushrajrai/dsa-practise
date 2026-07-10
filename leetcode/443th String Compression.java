@@ -41,3 +41,30 @@
 // 1 <= chars.length <= 2000
 // chars[i] is a lowercase English letter, uppercase English letter, digit, or symbol.
 
+class Solution {
+    public int compress(char[] chars) {
+        int n=chars.length;
+        int index=0;
+        for(int i=0;i<n;i++){
+            char ch = chars[i];
+            int count=0;
+            while(i<n && chars[i]==ch){
+                count++;
+                i++;
+            }
+            if(count==1){
+                chars[index]=ch;
+                index++;
+            }else{
+                chars[index]=ch;
+                index++;
+                for(char digit : Integer.toString(count).toCharArray()){
+                    chars[index]=digit;
+                    index++;
+                }
+            }
+            i--;
+        }
+        return index;
+    }
+}
