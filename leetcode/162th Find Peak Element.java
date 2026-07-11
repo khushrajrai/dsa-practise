@@ -28,3 +28,33 @@
 // -231 <= nums[i] <= 231 - 1
 // nums[i] != nums[i + 1] for all valid i.
  
+class Solution {
+    public int findPeakElement(int[] nums) {
+        int start=0;
+        int end=nums.length-1;
+        while(start<end){
+            int mid=start+(end-start)/2;
+            if(nums[mid]<nums[mid+1]){
+                start=mid+1;
+            }else{
+                end=mid;
+            }
+        }
+        return end;
+    }
+}
+//Not More Optimal
+
+// class Solution {
+//     public int findPeakElement(int[] nums) {
+//         int max=Integer.MIN_VALUE;
+//         int maxIndex=0;
+//         for(int i=0;i<nums.length;i++){
+//             if(max<nums[i]){
+//                 maxIndex=i;
+//             }
+//             max = Math.max(max,nums[i]);
+//         }
+//         return maxIndex;
+//     }
+// }
