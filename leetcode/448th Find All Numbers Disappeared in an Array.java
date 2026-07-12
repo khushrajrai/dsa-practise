@@ -23,3 +23,18 @@
 
 // Follow up: Could you do it without extra space and in O(n) runtime? You may assume the returned list does not count as extra space.
 
+class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        HashSet<Integer> set = new HashSet<>();
+        for(int num : nums){
+            set.add(num);
+        }
+        ArrayList<Integer> res = new ArrayList<>();
+        for(int i=1;i<=nums.length;i++){
+            if(!set.contains(i)){
+                res.add(i);
+            }
+        }
+        return res;
+    }
+}
