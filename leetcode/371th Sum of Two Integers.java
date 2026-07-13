@@ -18,3 +18,8 @@
 
 // -1000 <= a, b <= 1000
 
+class Solution {
+    public int getSum(int a, int b) {
+        return a+b;
+    }
+}
