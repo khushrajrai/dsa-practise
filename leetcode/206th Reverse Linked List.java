@@ -24,17 +24,42 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+//Iterative Approach
+// class Solution {
+//     public ListNode reverseList(ListNode head) {
+//         ListNode curr=head;
+//         ListNode prev=null;
+//         while(curr!=null){
+//             ListNode nextNode = curr.next;
+//             curr.next=prev;
+//             prev=curr;
+//             curr=nextNode;
+//         }
+//         return prev;
+//     }
+// }
+// Recursive Approach
 class Solution {
 
     public ListNode reverseList(ListNode head) {
-        ListNode prev = null;
-        ListNode current = head;
-        while (current != null) {
-            ListNode nxt = current.next;
-            current.next = prev;
-            prev = current;
-            current = nxt;
+        //base case
+        if (head == null || head.next == null) {
+            return head;
         }
-        return prev;
+        //recursive call
+        ListNode last = reverseList(head.next);
+        head.next.next = head;
+        head.next = null;
+        return last;
     }
 }
