@@ -37,3 +37,37 @@
 // lists[i] is sorted in ascending order.
 // The sum of lists[i].length will not exceed 104.
 
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode mergeKLists(ListNode[] lists) {
+        //creating a newArr containing all values from arrays of linkedlists
+        List<Integer> newArr = new ArrayList<>();
+        for(ListNode k:lists){
+            while(k!=null){
+               newArr.add(k.val);
+               k=k.next;
+            }
+        }
+        if(newArr.size()==0){
+            return null; //empty newArr returns null
+        }
+        Collections.sort(newArr);
+        //now making the ArrayList to linkedlist
+        ListNode head=new ListNode(newArr.get(0));
+        ListNode curr=head;
+        for(int i=1;i<newArr.size();i++){
+         curr.next=new ListNode(newArr.get(i));
+         curr=curr.next;
+        }
+        return head;
+    }
+}
