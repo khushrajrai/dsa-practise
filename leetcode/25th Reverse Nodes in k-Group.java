@@ -24,32 +24,72 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-//Recursive Approach
+//Iterative Approach
 class Solution {
 
+    public int len(ListNode head) {
+        int counter = 0;
+        while (head != null) {
+            counter++;
+            head = head.next;
+        }
+        return counter;
+    }
+
     public ListNode reverseKGroup(ListNode head, int k) {
-        ListNode curr = head;
-        int count = 0;
-        // Check for at least k nodes exists
-        while (curr != null && count < k) {
-            curr = curr.next;
-            count++;
-        }
-        // Reverse if found k nodes
-        if (count == k) {
-            // Reverse remaining list first
-            curr = reverseKGroup(curr, k);
-            // Reverse current group of k nodes
-            while (count > 0) {
-                ListNode temp = head.next; // Save next node
-                head.next = curr;// Connect current node
-                curr = head; // Move curr forward
-                head = temp; // Move to next (temp) node
-                count--;
+        int N = len(head);
+        int groups = N / k;
+        ListNode prevHead = null;
+        ListNode currHead = head;
+        ListNode ansNode = null;
+        for (int i = 0; i < groups; i++) {
+            ListNode prev = null;
+            ListNode curr = currHead;
+            ListNode nextNode = null;
+            //Reverse K-Groups
+            for (int j = 0; j < k; j++) {
+                nextNode = curr.next;
+                curr.next = prev;
+                prev = curr;
+                curr = nextNode;
             }
-            // New head for the group
-            head = curr;
+            if (prevHead == null) {
+                ansNode = prev;
+            } else {
+                prevHead.next = prev;
+            }
+            prevHead = currHead;
+            currHead = curr;
         }
-        return head;
+        prevHead.next = currHead;
+        return ansNode;
     }
 }
+//Recursive Approach
+// class Solution {
+//     public ListNode reverseKGroup(ListNode head, int k) {
+//         ListNode curr = head;
+//         int count = 0;
+//         // Check for at least k nodes exists
+//         while (curr != null && count < k) {
+//             curr = curr.next;
+//             count++;
+//         }
+//         // Reverse if found k nodes
+//         if (count == k) {
+//             // Reverse remaining list first
+//             curr = reverseKGroup(curr, k);
+//             // Reverse current group of k nodes
+//             while (count > 0) {
+//                 ListNode temp = head.next; // Save next node
+//                 head.next = curr;// Connect current node
+//                 curr = head; // Move curr forward
+//                 head = temp; // Move to next (temp) node
+//                 count--; 
+//             }
+//             // New head for the group
+//             head = curr;
+//         }
+//         return head;
+//     }
+// }
