@@ -20,6 +20,7 @@
 // -105 <= Node.val <= 105
 // pos is -1 or a valid index in the linked-list.
 // Follow up: Can you solve it using O(1) (i.e. constant) memory?
+/
 /**
  * Definition for singly-linked list.
  * class ListNode {
@@ -32,17 +33,42 @@
  * }
  */
 public class Solution {
-
     public boolean hasCycle(ListNode head) {
         ListNode slow = head;
         ListNode fast = head;
-        while (fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
-            if (slow == fast) {
-                return true;
-            }
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+            if(slow==fast) return true;
         }
+        //startNode
+        // ListNode startNode=firstNodeOfCycle(head);
+        // if(startNode!=null){
+        //     System.out.println("Found Cycle at"+startNode.val);
+        // }
         return false;
     }
+    //In case we need that cycle's startNode to be found
+    // public ListNode firstNodeOfCycle(ListNode head){
+    //     ListNode slow=head;
+    //     ListNode fast=head;
+    //     boolean found=false;
+    //     while(fast!=null && fast.next!=null){
+    //         slow=slow.next;
+    //         fast=fast.next.next;
+    //         if(slow==fast){
+    //             found=true;
+    //             break;
+    //         }
+    //     }
+    //     if(!found){
+    //         return null;
+    //     }
+    //     slow=head;
+    //     while(slow!=fast){
+    //         slow=slow.next;
+    //         fast=fast.next;
+    //     }
+    //     return slow;
+    // }
 }
