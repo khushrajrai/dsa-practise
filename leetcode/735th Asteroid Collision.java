@@ -54,9 +54,9 @@ class Solution {
                 }
             }
         }
-        int len = stack.size();
-        int ansArray[] = new int[len];
-        for (int i = len - 1; i >= 0; i--) {
+        int length = stack.size();
+        int ansArray[] = new int[length];
+        for (int i = length - 1; i >= 0; i--) {
             ansArray[i] = stack.pop();
         }
         return ansArray;
