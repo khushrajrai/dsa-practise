@@ -32,3 +32,25 @@
 // 1 <= stones.length <= 30
 // 1 <= stones[i] <= 1000
 
+class Solution {
+    public int lastStoneWeight(int[] stones) {
+        Arrays.sort(stones);
+        ArrayList<Integer> stonesList = new ArrayList<>();
+        for (int val : stones) {
+            stonesList.add(val);
+        }
+        while (stonesList.size() > 1) {
+            int max = stonesList.get(stonesList.size() - 1);
+            int secondMax = stonesList.get(stonesList.size() - 2);
+            if (max == secondMax) {
+                stonesList.remove(stonesList.size() - 1);
+                stonesList.remove(stonesList.size() - 1);
+            } else {
+                stonesList.set(stonesList.size() - 1, max - secondMax);
+                stonesList.remove(stonesList.size() - 2);
+            }
+            Collections.sort(stonesList);
+        }
+        return stonesList.size()==0?0:stonesList.get(0);
+    }
+}
