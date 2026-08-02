@@ -34,23 +34,14 @@
 
 class Solution {
     public int lastStoneWeight(int[] stones) {
-        Arrays.sort(stones);
-        ArrayList<Integer> stonesList = new ArrayList<>();
-        for (int val : stones) {
-            stonesList.add(val);
+        //make maxHeap pq (by default - we gets minHeap pq)
+        PriorityQueue<Integer> pq = new PriorityQueue<>((a,b)-> b-a);
+        for(int val:stones){
+            pq.offer(val);
         }
-        while (stonesList.size() > 1) {
-            int max = stonesList.get(stonesList.size() - 1);
-            int secondMax = stonesList.get(stonesList.size() - 2);
-            if (max == secondMax) {
-                stonesList.remove(stonesList.size() - 1);
-                stonesList.remove(stonesList.size() - 1);
-            } else {
-                stonesList.set(stonesList.size() - 1, max - secondMax);
-                stonesList.remove(stonesList.size() - 2);
-            }
-            Collections.sort(stonesList);
+        while(pq.size()>1){
+            pq.offer(pq.poll()-pq.poll());
         }
-        return stonesList.size()==0?0:stonesList.get(0);
+        return pq.poll();
     }
 }
