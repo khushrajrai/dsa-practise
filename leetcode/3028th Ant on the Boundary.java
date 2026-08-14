@@ -39,3 +39,16 @@
 // -10 <= nums[i] <= 10
 // nums[i] != 0
 
+class Solution {
+    public int returnToBoundaryCount(int[] nums) {
+        int position=0;
+        int count=0;
+        for(int val : nums){
+            position+=val;
+            if(position==0){
+                count++;
+            }
+        }
+        return count;
+    }
+}
