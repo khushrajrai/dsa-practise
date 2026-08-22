@@ -2,7 +2,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class templatecf {
 
     public static void main(String[] args) throws Exception {
         FastScanner fs = new FastScanner(System.in);
