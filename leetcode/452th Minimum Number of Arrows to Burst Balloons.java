@@ -35,3 +35,19 @@
 // points[i].length == 2
 // -231 <= xstart < xend <= 231 - 1
 
+class Solution {
+    public int findMinArrowShots(int[][] points) {
+        // Arrays.sort(points,(a,b)->a[1]-b[1]); --- here the constraints is -231 <= xstart < xend <= 231 - 1 so we can not perform this
+        Arrays.sort(points,(a,b)->(a[1]<=b[1])?-1:1);
+        int n=points.length;
+        int arrows=1;
+        int lastEnd=points[0][1];
+        for(int point[] : points){
+            if(point[0]>lastEnd){
+                arrows++;
+                lastEnd=point[1];
+            }
+        }
+        return arrows;
+    }
+}
