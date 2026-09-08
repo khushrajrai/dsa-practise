@@ -26,3 +26,35 @@
 // 1 <= s.length, p.length <= 3 * 104
 // s and p consist of lowercase English letters.
 
+class Solution {
+    public List<Integer> findAnagrams(String s, String p) {
+        List<Integer> res = new ArrayList<>();
+        int n=s.length();
+        int m=p.length();
+        if(m>n){
+            return res;
+        }
+        int[] sCount=new int[26];
+        int[] pCount=new int[26];
+        //initial window
+        for(int i=0;i<m;i++){
+            int si=s.charAt(i)-'a';
+            int pi=p.charAt(i)-'a';
+            sCount[si]++;
+            pCount[pi]++;
+        }
+        if(Arrays.equals(sCount,pCount)){
+            res.add(0);
+        }
+        for(int i=1;i<=n-m;i++){
+            int prev=s.charAt(i-1)-'a';
+            int next=s.charAt(i+m-1)-'a';
+            sCount[prev]--;
+            sCount[next]++;
+            if(Arrays.equals(sCount,pCount)){
+                res.add(i);
+            }
+        }
+        return res;
+    }
+}
