@@ -20,28 +20,67 @@
 // 1/6
 // Yes
 // No
-// Using HashMap and Sorting
+//Using MinHeap PQ + HashMap
+class Number implements Comparable<Number> {
+
+    int element;
+    int freq;
+
+    Number(int element, int freq) {
+        this.element = element;
+        this.freq = freq;
+    }
+
+    public int compareTo(Number that) {
+        return this.freq - that.freq; //increasing (for min heap)
+    }
+}
+
 class Solution {
 
     public int[] topKFrequent(int[] nums, int k) {
-
-        // Step 1 - Frequency Map
-        HashMap<Integer, Integer> map = new HashMap<>();
-        for (int i : nums) {
-            map.put(i, map.getOrDefault(i, 0) + 1);
+        PriorityQueue<Number> pq = new PriorityQueue<>();
+        HashMap<Integer, Integer> freqMap = new HashMap<>();
+        //find all freq of elements
+        for (int element : nums) {
+            freqMap.put(element, freqMap.getOrDefault(element, 0) + 1);
         }
-
-        // Step 2 - Put keys into list
-        List<Integer> list = new ArrayList<>(map.keySet());
-
-        //Step 3 - Sort by Frequency (Descending)
-        list.sort((a, b) -> Integer.compare(map.get(b), map.get(a)));
-
-        // Step 4 - Take first k elements
-        int[] result = new int[k];
-        for (int i = 0; i < k; i++) {
-            result[i] = list.get(i);
+        //insert elements in pq
+        for (Map.Entry<Integer, Integer> entry : freqMap.entrySet()) {
+            Number number = new Number(entry.getKey(), entry.getValue());
+            pq.offer(number);
+            if (pq.size() > k) {
+                pq.poll();
+            }
         }
-        return result;
+        int res[] = new int[k];
+        int index = 0;
+        while (index < k) {
+            Number number = pq.poll();
+            res[index] = number.element;
+            index++;
+        }
+        return res;
     }
 }
+
+// Using HashMap and Sorting
+// class Solution {
+//     public int[] topKFrequent(int[] nums, int k) {
+//         // Step 1 - Frequency Map
+//         HashMap<Integer,Integer> map = new HashMap<>();
+//         for(int i:nums){
+//             map.put(i,map.getOrDefault(i,0)+1);
+//         }
+//         // Step 2 - Put keys into list
+//         List<Integer> list = new ArrayList<>(map.keySet());
+//         //Step 3 - Sort by Frequency (Descending)
+//         list.sort((a,b)->Integer.compare(map.get(b),map.get(a)));
+//         // Step 4 - Take first k elements
+//         int[] result = new int[k];
+//         for(int i=0;i<k;i++){
+//             result[i] = list.get(i);
+//         }
+//         return result;
+//     }
+// }
