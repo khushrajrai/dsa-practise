@@ -25,21 +25,43 @@
 class Solution {
 
     public boolean isIsomorphic(String s, String t) {
-        // HashMap
-        HashMap<Character, Character> hm = new HashMap<>();
-        for (int i = 0; i < s.length(); i++) {
-            char ch1 = s.charAt(i);
-            char ch2 = t.charAt(i);
-            if (hm.containsKey(ch1)) {
-                if (hm.get(ch1) != ch2) {
-                    return false;
-                }
-            } else if (hm.containsValue(ch2)) {
+        int n = s.length();
+        HashMap<Character, Character> sToTMap = new HashMap<>();
+        HashMap<Character, Character> tToSMap = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            char s1 = s.charAt(i);
+            char t1 = t.charAt(i);
+            if (!sToTMap.containsKey(s1)) {
+                sToTMap.put(s1, t1);
+            }
+            if (!tToSMap.containsKey(t1)) {
+                tToSMap.put(t1, s1);
+            }
+            if (sToTMap.get(s1) != t1 || tToSMap.get(t1) != s1) {
                 return false;
             }
-            hm.put(ch1, ch2);
         }
         return true;
-
     }
 }
+
+// class Solution {
+//     public boolean isIsomorphic(String s, String t) {
+//         // HashMap
+//         HashMap<Character,Character> hm = new HashMap<>();
+//         for(int i=0;i<s.length();i++){
+//             char ch1 = s.charAt(i);
+//             char ch2 = t.charAt(i);
+//             if(hm.containsKey(ch1)){
+//                 if(hm.get(ch1)!=ch2){
+//                     return false;
+//                 }
+//             }
+//             else if(hm.containsValue(ch2)){
+//                 return false;
+//             }
+//             hm.put(ch1,ch2);
+//         }
+//         return true;
+//     }
+// }
