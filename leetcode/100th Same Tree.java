@@ -28,3 +28,37 @@
 // The number of nodes in both trees is in the range [0, 100].
 // -104 <= Node.val <= 104
 
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        //make list1 and list2 for both inorder traversal and just compare 
+        List<Integer> list1 = new ArrayList<>();
+        List<Integer> list2 = new ArrayList<>();
+        preorder(p,list1);
+        preorder(q,list2);
+        return list1.equals(list2);
+    }
+    void preorder(TreeNode node, List<Integer> list){
+        if(node==null){
+            list.add(null);
+            return ;
+        }
+        list.add(node.val);
+        preorder(node.left,list);
+        preorder(node.right,list);
+    }
+}
