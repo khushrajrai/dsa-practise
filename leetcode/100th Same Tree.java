@@ -57,6 +57,7 @@ class Solution {
             list.add(null);
             return ;
         }
+        
         list.add(node.val);
         preorder(node.left,list);
         preorder(node.right,list);
