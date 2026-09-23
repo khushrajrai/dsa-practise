@@ -35,7 +35,7 @@ class Solution {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         HashMap<Integer, Integer> indexMap = new HashMap<>();
         //hash the values with the indexs
-        for (int i = 0; i < inorder.length; i++) {
+        for(int i = 0; i < inorder.length; i++) {
             indexMap.put(inorder[i], i);
         }
         int n = preorder.length;
