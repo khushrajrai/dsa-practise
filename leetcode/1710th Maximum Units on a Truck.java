@@ -26,7 +26,7 @@ class Solution {
     public int maximumUnits(int[][] boxTypes, int truckSize) {
         Arrays.sort(boxTypes, (a, b) -> b[1] - a[1]);
         int result = 0;
-        for (int boxType[] : boxTypes) {
+        for(int boxType[] : boxTypes) {
             if (boxType[0] >= truckSize) {
                 result += (truckSize * boxType[1]);
                 truckSize = 0;
