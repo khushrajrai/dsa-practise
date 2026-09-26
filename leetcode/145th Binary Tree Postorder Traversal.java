@@ -83,7 +83,7 @@ class Solution {
                 node = node.left;
             }
             //move to right
-            if (stack.peek().right != null) {
+            if(stack.peek().right != null) {
                 node = stack.peek().right;
             } else {
                 TreeNode temp = stack.pop();
