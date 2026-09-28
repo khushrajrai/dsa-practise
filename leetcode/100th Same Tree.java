@@ -53,7 +53,7 @@ class Solution {
         return list1.equals(list2);
     }
     void preorder(TreeNode node, List<Integer> list){
-        if(node==null){
+        if (node==null){
             list.add(null);
             return ;
         }
