@@ -66,7 +66,7 @@ class Solution {
                     startIndex = windowStart;
                 }
                 ch = s.charAt(windowStart);
-                if(freqMap.containsKey(ch)){
+                if (freqMap.containsKey(ch)){
                     freqMap.put(ch,freqMap.get(ch)+1);
                     if(freqMap.get(ch)>0){
                         uniqueCharCount++;
