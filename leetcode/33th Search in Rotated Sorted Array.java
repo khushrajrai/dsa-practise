@@ -25,7 +25,7 @@ class Solution {
         int n = nums.length;
         int start = 0;
         int end = n - 1;
-        int ans = -1;
+        int res = -1;
         while (start <= end) {
             int mid = start + (end - start) / 2;
             if (target == nums[mid]) {
@@ -45,6 +45,6 @@ class Solution {
                 }
             }
         }
-        return ans;
+        return res;
     }
 }
