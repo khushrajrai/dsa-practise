@@ -28,7 +28,7 @@ class Solution {
         int ans = -1;
         while (start <= end) {
             int mid = start + (end - start) / 2;
-            if (target == nums[mid]) {
+            if (target==nums[mid]) {
                 return mid;
             }
             if (nums[start] <= nums[mid]) {
