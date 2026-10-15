@@ -22,7 +22,7 @@ class Solution {
         int l = 0;
         int r = n - 1;
         int ans = 0;
-        while (l < r) {
+        while(l < r) {
             if (height[l] > leftMax) {
                 leftMax = height[l];
             }
