@@ -43,12 +43,11 @@
 // 1 <= tasks.length <= 104
 // tasks[i] is an uppercase English letter.
 // 0 <= n <= 100
-
 class Task implements Comparable<Task>{
     int frequency;
     int executionTime;
-    Task(int f,int t){
-        frequency=f;
+    Task(int fr,int t){
+        frequency=fr;
         executionTime=t;
     }
     public int compareTo(Task that){
