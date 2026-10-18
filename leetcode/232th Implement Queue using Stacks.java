@@ -48,7 +48,7 @@ class MyQueue {
         s2=new Stack<>();
     }
     
-    public void push(int x) {
+    public void push (int x) {
         while(!s1.isEmpty()){
             s2.push(s1.pop());
         }
