@@ -23,7 +23,7 @@ class Solution {
         int i = 0;
         int j = n - 1;
         int max = 0;
-        while (i < j) {
+        while(i < j) {
             max = Math.max(max, (j - i) * Math.min(height[i], height[j]));
             if (height[i] < height[j]) {
                 i++;
