@@ -21,31 +21,61 @@
 // 1 <= nums.length <= 105
 // -104 <= nums[i] <= 104
 // 1 <= k <= nums.length
+// class Solution {
+//     public int[] maxSlidingWindow(int[] nums, int k) {
+//         int n = nums.length;
+//         int res[] = new int[n - k + 1];
+//         if (n == 0) return res;
+//         Deque<Integer> deque = new ArrayDeque<Integer>();
+//         int index = 0;
+//         while (index < k) {
+//             while (!deque.isEmpty() && nums[deque.peekLast()] <= nums[index]) {
+//                 deque.pollLast();
+//             }
+//             deque.offerLast(index);
+//             index++;
+//         }
+//         res[0] = nums[deque.peekFirst()];
+//         for (int i = 1; i < n - k + 1; i++) {
+//             if (!deque.isEmpty() && deque.peekFirst() <= (i - 1)) {
+//                 deque.pollFirst();
+//             }
+//             while (!deque.isEmpty() && nums[deque.peekLast()] <= nums[i + k - 1]) {
+//                 deque.pollLast();
+//             }
+//             deque.offerLast(i + k - 1);
+//             res[i] = nums[deque.peekFirst()];
+//         }
+//         return res;
+//     }
+// }
 class Solution {
 
     public int[] maxSlidingWindow(int[] nums, int k) {
         int n = nums.length;
+        Deque<Integer> q = new ArrayDeque<>();
         int res[] = new int[n - k + 1];
-        if (n == 0) return res;
-        Deque<Integer> deque = new ArrayDeque<Integer>();
-        int index = 0;
-        while (index < k) {
-            while (!deque.isEmpty() && nums[deque.peekLast()] <= nums[index]) {
-                deque.pollLast();
+        //1st window
+        for (int i = 0; i < k; i++) {
+            //check for smaller values
+            while (!q.isEmpty() && nums[q.peekLast()] <= nums[i]) {
+                q.pollLast();
             }
-            deque.offerLast(index);
-            index++;
+            q.offerLast(i);
         }
-        res[0] = nums[deque.peekFirst()];
-        for (int i = 1; i < n - k + 1; i++) {
-            if (!deque.isEmpty() && deque.peekFirst() <= (i - 1)) {
-                deque.pollFirst();
+        res[0] = nums[q.peekFirst()];
+        //for next all windows
+        for (int i = k; i < n; i++) {
+            //remove for curr window
+            while (!q.isEmpty() && q.peekFirst() <= i - k) {
+                q.pollFirst();
             }
-            while (!deque.isEmpty() && nums[deque.peekLast()] <= nums[i + k - 1]) {
-                deque.pollLast();
+            //check for smaller values
+            while (!q.isEmpty() && nums[q.peekLast()] <= nums[i]) {
+                q.pollLast();
             }
-            deque.offerLast(i + k - 1);
-            res[i] = nums[deque.peekFirst()];
+            q.offerLast(i);
+            res[i - k + 1] = nums[q.peekFirst()];
         }
         return res;
     }
