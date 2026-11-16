@@ -23,11 +23,11 @@ class Solution {
         int end = n - 1;
         while (start <= end) {
             int mid = start + (end - start) / 2;
-            if (target == nums[mid]) {
+            if(target == nums[mid]) {
                 return mid;
-            } else if (target > nums[mid]) {
+            } else if(target > nums[mid]) {
                 start = mid + 1;
-            } else {
+            } else{
                 end = mid - 1;
             }
         }
