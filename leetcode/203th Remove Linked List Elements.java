@@ -27,7 +27,7 @@
 class Solution {
 
     public ListNode removeElements(ListNode head, int val) {
-        if (head == null) {
+        if(head == null) {
             return null;
         }
         ListNode dummy = new ListNode(0);
