@@ -52,3 +52,23 @@
 // In the fourth test case, two moves would be enough to make each pile contain 2
 //  stones, but only one move is allowed. After any single move, the piles do not contain the same number of stones.
 
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+      Scanner sc = new Scanner(System.in);
+      int t=sc.nextInt();
+      while(t-->0){
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+        int[] arr = {a,b,c};
+        Arrays.sort(arr);
+        if(arr[1]-arr[0]==1 && arr[2]-arr[1]==1){
+          System.out.println("YES");
+        }else{
+          System.out.println("NO");
+        }
+      }
+    }
+}
